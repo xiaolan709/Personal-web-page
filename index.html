@@ -6,6 +6,7 @@
     <title>黃筱嵐的個人職涯網頁 - MIS 工程師</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <nav>
@@ -24,7 +25,7 @@
                 <h1>你好，我是 黃筱嵐</h1>
                 <p class="school-info">資管二A | 411312642</p>
                 <div class="bio-intro">
-                    <p>我來自台南市，今年 19 歲。對於資訊相關的學習抱持高度熱忱，這是我在資管系探索技術與管理結合的起點。這堂課是資訊管理導論，我要製作一個展現自我的求職履歷網頁。</p>
+                    <p>我來自台南市，今年19歲，對資訊相關課程充滿興趣。這是我在大二期間為了探索技術所製作的自我求職履歷網頁，也是我踏入資訊與管理整合領域的起點。（本作品為資訊管理導論課程成果）</p>
                 </div>
                 
                 <div class="profile-grid">
@@ -133,15 +134,31 @@
 
                 <div class="test-images-group">
                     <div class="test-image-item">
-                        <img src="images/DS.png" alt="測驗相關圖">
+                        <img src="images/DS.png" alt="測驗相關圖" onclick="openFullscreen(this)">
                     </div>
                     <div class="test-image-item">
-                        <img src="images/CS.png" alt="測驗圖">
+                        <img src="images/CS.png" alt="測驗圖" onclick="openFullscreen(this)">
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <div id="fullscreen-overlay" onclick="closeFullscreen()">
+        <img id="fullscreen-img">
+    </div>
+
+    <script>
+        function openFullscreen(imgElement) {
+            var overlay = document.getElementById("fullscreen-overlay");
+            var fullImg = document.getElementById("fullscreen-img");
+            overlay.style.display = "flex";
+            fullImg.src = imgElement.src;
+        }
+        function closeFullscreen() {
+            document.getElementById("fullscreen-overlay").style.display = "none";
+        }
+    </script>
 
     <section id="resume">
         <div class="container">
