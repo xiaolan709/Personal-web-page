@@ -178,54 +178,106 @@ nav ul li a { color: white; text-decoration: none; font-weight: bold; }
     }
 }
 
-/* --- 測驗結果區塊並排樣式 --- */
+/* --- 測驗結果區塊：獨立頁面感優化 --- */
+
+#test {
+    background: linear-gradient(to bottom, #ffffff, #f0f4f8);
+    padding: 120px 0; /* 增加上下內距，讓它佔據更多空間 */
+    min-height: 90vh; /* 確保區塊高度接近一整個螢幕 */
+    display: flex;
+    align-items: center;
+}
 
 .test-flex-container {
     display: flex;
-    align-items: center; /* 垂直居中對齊：文字與圖片群 */
-    gap: 40px;           /* 文字與圖片群之間的間距 */
-    margin-top: 30px;
+    align-items: center; /* 讓左邊文字與右邊圖片垂直居中對齊 */
+    gap: 60px;
+    width: 100%;
 }
 
 .test-text {
-    flex: 1; /* 文字佔據剩餘空間 */
+    flex: 1.2; /* 讓文字區塊稍微寬一點點 */
 }
 
-/* 🌟 核心：兩張圖片的容器 🌟 */
+.holland-code-badge {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+}
+
+.test-main-desc {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    margin-bottom: 35px;
+    color: #2c3e50;
+}
+
+/* 小卡片設計 */
+.analysis-mini-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    border-left: 5px solid #3498db;
+}
+
+.card-letter {
+    font-size: 2rem;
+    font-weight: 900;
+    color: #3498db;
+    opacity: 0.3;
+}
+
+/* 圖片組設計：確保並排且大小一致 */
 .test-images-group {
     display: flex;
-    flex: 0 0 440px;     /* 兩張圖加上間距的總寬度 (200 + 200 + 40 = 440) */
-    gap: 20px;           /* 兩張圖片之間的間距 */
-    align-items: center; /* 🌟 核心：確保 DS.png 和 CS.png 垂直方向完美對齊 🌟 */
-    justify-content: center; /* 水平居中 */
+    gap: 20px;
+    flex: 0 0 460px; /* 固定圖片區的寬度 */
 }
 
-/* 每一張圖片項目的樣式 (維持 1/2 大小) */
 .test-image-item {
-    flex: 0 0 200px;     /* 🌟 單張圖片容器寬度為 200px 🌟 */
-    max-width: 200px;
+    flex: 1;
 }
 
 .test-image-item img {
-    width: 100%;       /* 圖片填滿 200px 的容器 */
-    height: auto;      /* 保持比例，防止變形 */
-    border-radius: 10px;        /* 柔和圓角 */
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* 輕微柔和陰影 */
-    border: 1px solid #ddd;     /* 淡淡的邊框線 */
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    border: 4px solid white;
+    cursor: zoom-in; /* 滑鼠移上去變放大鏡 */
+    transition: transform 0.3s ease;
 }
 
-/* 📱 行動裝置適應：手機上看時自動變成垂直排列 */
-@media (max-width: 950px) {
-    .test-flex-container {
-        flex-direction: column;
-        text-align: center;
-    }
-    .test-images-group {
-        flex: 0 0 auto;
-        width: 100%;       /* 手機上寬度自動 */
-        max-width: 440px;   /* 手機上最大寬度 */
-        gap: 15px;         /* 手機上間距縮小 */
-    }
+.test-image-item img:hover {
+    transform: translateY(-10px);
+}
+
+/* 全螢幕放大效果 */
+#fullscreen-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.9);
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+}
+#fullscreen-img { max-width: 90%; max-height: 90%; border-radius: 10px; }
+
+/* 📱 響應式：手機板自動垂直排 */
+@media (max-width: 1000px) {
+    .test-flex-container { flex-direction: column; text-align: center; }
+    .analysis-mini-card { text-align: left; }
+    .test-images-group { flex: 0 0 auto; width: 100%; }
 }
 
 /* --- 求職履歷區塊美化 --- */
