@@ -177,3 +177,152 @@ nav ul li a { color: white; text-decoration: none; font-weight: bold; }
         margin-bottom: 20px;
     }
 }
+
+/* --- 測驗結果區塊並排樣式 --- */
+
+.test-flex-container {
+    display: flex;
+    align-items: center; /* 垂直居中對齊：文字與圖片群 */
+    gap: 40px;           /* 文字與圖片群之間的間距 */
+    margin-top: 30px;
+}
+
+.test-text {
+    flex: 1; /* 文字佔據剩餘空間 */
+}
+
+/* 🌟 核心：兩張圖片的容器 🌟 */
+.test-images-group {
+    display: flex;
+    flex: 0 0 440px;     /* 兩張圖加上間距的總寬度 (200 + 200 + 40 = 440) */
+    gap: 20px;           /* 兩張圖片之間的間距 */
+    align-items: center; /* 🌟 核心：確保 DS.png 和 CS.png 垂直方向完美對齊 🌟 */
+    justify-content: center; /* 水平居中 */
+}
+
+/* 每一張圖片項目的樣式 (維持 1/2 大小) */
+.test-image-item {
+    flex: 0 0 200px;     /* 🌟 單張圖片容器寬度為 200px 🌟 */
+    max-width: 200px;
+}
+
+.test-image-item img {
+    width: 100%;       /* 圖片填滿 200px 的容器 */
+    height: auto;      /* 保持比例，防止變形 */
+    border-radius: 10px;        /* 柔和圓角 */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* 輕微柔和陰影 */
+    border: 1px solid #ddd;     /* 淡淡的邊框線 */
+}
+
+/* 📱 行動裝置適應：手機上看時自動變成垂直排列 */
+@media (max-width: 950px) {
+    .test-flex-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .test-images-group {
+        flex: 0 0 auto;
+        width: 100%;       /* 手機上寬度自動 */
+        max-width: 440px;   /* 手機上最大寬度 */
+        gap: 15px;         /* 手機上間距縮小 */
+    }
+}
+
+/* --- 求職履歷區塊美化 --- */
+
+#resume {
+    padding: 80px 0;
+    background-color: #ffffff;
+}
+
+.resume-content-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr; /* 左大右小佈局 */
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.resume-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    border: 1px solid #f0f0f0;
+    margin-bottom: 25px;
+}
+
+.resume-card h3 {
+    color: #3498db;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+}
+
+.resume-card p {
+    line-height: 1.8;
+    color: #444;
+    font-size: 1.05rem;
+}
+
+/* 右側精進計畫樣式 */
+.plan-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.step {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.step-icon {
+    background: #3498db;
+    color: white;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    min-width: 35px;
+    text-align: center;
+}
+
+.step-text strong {
+    display: block;
+    color: #2c3e50;
+    margin-bottom: 5px;
+}
+
+.step-text p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #666;
+}
+
+/* 📱 行動裝置適應 */
+@media (max-width: 900px) {
+    .resume-content-grid {
+        grid-template-columns: 1fr;
+    }
+}
+/* --- 履歷底部圖片美化 --- */
+.resume-footer-image {
+    margin-top: 50px;       /* 增加與上方內容的距離 */
+    text-align: center;     /* 圖片置中 */
+}
+
+.resume-footer-image img {
+    max-width: 100%;        /* 寬度不超過容器 */
+    height: auto;           /* 等比例縮放 */
+    border-radius: 15px;    /* 圓角風格 */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* 專業陰影 */
+    border: 5px solid white; /* 相框白邊 */
+    transition: transform 0.3s ease;
+}
+
+.resume-footer-image img:hover {
+    transform: translateY(-8px); /* 移上去有微微浮起的感覺 */
+}
